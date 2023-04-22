@@ -1,0 +1,11 @@
+version: 1
+main: io.github.cubecolony.Warps.Main
+name: Warps
+api-version: 1.13
+commands:
+  warp:
+    usage: /warp
+  setwarp:
+    usage: /setwarp
+  removewarp:
+    usage: /removewarp
