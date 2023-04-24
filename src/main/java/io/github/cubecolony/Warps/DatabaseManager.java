@@ -134,8 +134,8 @@ public class DatabaseManager {
             statement.setLong(5, warp.getX());
             statement.setLong(6, warp.getY());
             statement.setLong(7, warp.getZ());
-            statement.setInt(8, warp.getPitch());
-            statement.setInt(9, warp.getYaw());
+            statement.setInt(8, (int) Math.floor(warp.getPitch()));
+            statement.setInt(9, (int) Math.floor(warp.getYaw()));
 
             statement.execute();
 

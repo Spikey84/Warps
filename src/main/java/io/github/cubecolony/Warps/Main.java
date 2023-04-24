@@ -3,10 +3,11 @@ package io.github.cubecolony.Warps;
 import io.github.cubecolony.Warps.commands.RemoveWarpCommand;
 import io.github.cubecolony.Warps.commands.SetWarpCommand;
 import io.github.cubecolony.Warps.commands.WarpCommand;
+import io.github.cubecolony.Warps.commands.WarpTab;
 import io.github.cubecolony.Warps.utils.SchedulerUtils;
-import org.bukkit.Bukkit;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.Objects;
 
 public class Main extends JavaPlugin {
     private WarpsManager warpsManager;
@@ -20,9 +21,12 @@ public class Main extends JavaPlugin {
 
         warpsManager = new WarpsManager();
 
-        getCommand("warp").setExecutor(new WarpCommand(warpsManager));
-        getCommand("setwarp").setExecutor(new SetWarpCommand(warpsManager));
-        getCommand("removewarp").setExecutor(new RemoveWarpCommand(warpsManager));
+        Objects.requireNonNull(getCommand("warp")).setExecutor(new WarpCommand(warpsManager, this));
+        Objects.requireNonNull(getCommand("warp")).setTabCompleter(new WarpTab(warpsManager));
+
+        Objects.requireNonNull(getCommand("setwarp")).setExecutor(new SetWarpCommand(warpsManager));
+        Objects.requireNonNull(getCommand("removewarp")).setExecutor(new RemoveWarpCommand(warpsManager));
+        Objects.requireNonNull(getCommand("removewarp")).setTabCompleter(new WarpTab(warpsManager));
     }
 
     @Override

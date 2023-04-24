@@ -13,8 +13,9 @@ public class Warp {
     private long x;
     private long y;
     private long z;
-    private int pitch;
-    private int yaw;
+    private float pitch;
+    private float yaw;
+
 
     public Warp(UUID uuid, String name, String serverName, UUID worldUUID, long x, long y, long z, int pitch, int yaw) {
         this.uuid = uuid;
@@ -25,12 +26,12 @@ public class Warp {
 
         this.y = y;
         this.z = z;
-        this.pitch = pitch;
-        this.yaw = yaw;
+        this.pitch = (float) pitch;
+        this.yaw = (float) yaw;
     }
 
     public Location getLocation() {
-        return new Location(Bukkit.getWorld(worldUUID), x, y, z, pitch, yaw);
+        return new Location(Bukkit.getWorld(worldUUID), x, y, z, yaw, pitch);
     }
 
     public UUID getUuid() {
@@ -45,11 +46,11 @@ public class Warp {
         return worldUUID;
     }
 
-    public int getPitch() {
+    public float getPitch() {
         return pitch;
     }
 
-    public int getYaw() {
+    public float getYaw() {
         return yaw;
     }
 
