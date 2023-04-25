@@ -22,8 +22,7 @@ public class WarpCommand implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
         if (args.length == 0) {
             Player player = (Player) commandSender;
-            player.sendMessage("Please enter a warp to travel too.");
-            //player.openInventory(new WarpsInventory(plugin, "Warps", player, warpsManager).getInventory());
+            new WarpsInventory("Warps", player, warpsManager, 1).open(player);
             return true;
         }
         WarpCommandLogic.travelWarp(warpsManager, commandSender, args[0]);
