@@ -31,7 +31,7 @@ public class Warp {
     }
 
     public Location getLocation() {
-        return new Location(Bukkit.getWorld(worldUUID), x, y, z, yaw, pitch);
+        return new Location(Bukkit.getWorld(worldUUID), Math.floor(x)+0.5, y, Math.floor(z)+0.5, yaw, pitch);
     }
 
     public UUID getUuid() {
