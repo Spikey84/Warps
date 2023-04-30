@@ -10,6 +10,7 @@ public class InventoryListener implements Listener {
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         Inventory inventory1 = event.getClickedInventory();
+        if (inventory1 == null) return;
         if (event.getWhoClicked() instanceof Player player
                 && inventory1.getHolder() instanceof BaseInventory inventory) {
             int slot = event.getSlot();
